@@ -1,0 +1,292 @@
+/* Variable
+    ============================= */
+
+:root{
+    --color-white: white;
+    --color-red: red;
+    --color-links: #FF6565;
+    --opacity-button: 0.9;
+}
+
+/* Base
+    ============================= */
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, p {
+    text-align: center;
+    color: var(--color-white);
+}
+
+button {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    margin: 20px auto;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: var(--opacity-button);
+}
+
+/* Header
+    ============================= */
+
+header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    padding: 20px 0;
+}
+
+nav {
+    color: var(--color-white);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 210px;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 30px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-links);
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked ~ .nav-links {
+    transform: translateY(0);
+}
+
+.menu-toggle:checked ~ .burger-menu .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle:checked ~ .burger-menu .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked ~ .burger-menu .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 480px) {
+    .menu {
+        padding: 0 20px;
+        position: relative;
+        justify-content: center; /* Center the logo */
+    }
+
+    .burger-menu {
+        display: flex;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 110;
+    }
+
+    .logo {
+        margin: 0 auto;
+    }
+
+    .menu-toggle:checked ~ .burger-menu .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .menu-toggle:checked ~ .burger-menu .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle:checked ~ .burger-menu .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Position below the header */
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-200%);
+        transition: transform 0.3s ease-in-out;
+        background: transparent;
+        z-index: 100;
+    }
+
+    .menu-toggle:checked ~ .nav-links {
+        transform: translateY(0);
+    }
+    
+    .menu-toggle:checked ~ .nav-links + main .hero_intro {
+        margin-top: 400px;
+        transition: margin-top 0.3s ease-in-out;
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    .nav-links a {
+        font-size: 16px;
+        text-align: center;
+        display: block;
+    }
+}
+
+/* Hero section
+    ============================= */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    background-image: url("images/headphones_hero_1.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.hero_intro, .hero > p {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin-top: 260px;
+    padding: 0 20px;
+}
+
+.hero > p {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    padding: 0 120px;
+    line-height: 1.6;
+}
+
+.hero_intro h1,
+.hero_intro p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hero_intro h1 {
+    font-size: 1.8rem;
+}
+
+.hero_intro p {
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        background-image: url("images/headphones_hero_1.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .hero_intro, .hero > p {
+        margin-top: 50px;
+        padding: 0 20px;
+        transition: margin-top 0.3s ease-in-out;
+    }
+    
+    .hero > p {
+        padding: 0 30px;
+        max-width: 375px;
+        margin-bottom: 200px;
+    }
+    
+    .hero_intro h1 {
+        margin-top: 270px;
+        font-size: 1.5rem;
+    }
+    
+    .hero_intro p {
+        text-align: center;
+        font-size: 0.9rem;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    button {
+        width: 60%;
+        max-width: 200px;
+    }
+}```
